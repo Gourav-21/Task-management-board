@@ -178,7 +178,7 @@ export function TaskList() {
         <ScrollArea className="h-[80vh] md:h-[70vh] rounded-md">
           {filteredAndSortedTasks.length === 0 ? (
             <div className="flex justify-center items-center text-5xl h-[50vh] p-4 border rounded-lg">
-              <h1>No tasks</h1>
+              <h1>No tasks 📑</h1>
             </div>
           ) : (
             <List update={update} getPriorityIcon={getPriorityIcon} filteredAndSortedTasks={filteredAndSortedTasks} />
