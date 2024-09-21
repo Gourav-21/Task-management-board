@@ -14,7 +14,8 @@ export default function EditTask({ task, update }: { task: Task, update: (id: st
   const [newTask, setNewTask] = useState(task)
   const [open, setOpen] = useState(false)
 
-  const updateTask = () => {
+  const updateTask = (e: React.FormEvent) => {
+    e.preventDefault()
     update(task.id, newTask)
     setOpen(false)
   }
