@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import * as jwt from 'jsonwebtoken';
 import express from 'express';
 import { authenticateJwt, SECRET } from "../middleware/middleware";
 import { User } from "../db";
