@@ -16,7 +16,7 @@ export type Task = {
   description?: string
   status: "To Do" | "In Progress" | "Completed"
   priority: "Low" | "Medium" | "High"
-  dueDate?: Date | null 
+  dueDate?: Date | null
 }
 
 export type SortOption = "asc" | "desc" | "default";
@@ -47,7 +47,7 @@ export function TaskList() {
   useEffect(() => {
     const getTodos = async () => {
       try {
-        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task', {
+        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/task', {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         });
         const data: Data[] = await response.json();
@@ -62,7 +62,7 @@ export function TaskList() {
 
   async function update(id: string, newData: Task, remove: boolean = false) {
     if (remove) {
-      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task/' + id, {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/task/' + id, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, 'Content-Type': 'application/json' },
       });
@@ -77,7 +77,7 @@ export function TaskList() {
     }
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task/' + id, {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/task/' + id, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(newData)
@@ -176,7 +176,13 @@ export function TaskList() {
 
       {list ? (
         <ScrollArea className="h-[80vh] md:h-[70vh] rounded-md">
-          <List update={update} getPriorityIcon={getPriorityIcon} filteredAndSortedTasks={filteredAndSortedTasks} />
+          {filteredAndSortedTasks.length === 0 ? (
+            <div className="flex justify-center items-center text-5xl h-[50vh] p-4 border rounded-lg">
+              <h1>No tasks</h1>
+            </div>
+          ) : (
+            <List update={update} getPriorityIcon={getPriorityIcon} filteredAndSortedTasks={filteredAndSortedTasks} />
+          )}
         </ScrollArea>
       ) : (
         <div className="space-y-4">
