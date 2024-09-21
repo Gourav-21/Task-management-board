@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticateJwt = exports.SECRET = void 0;
 const jwt = __importStar(require("jsonwebtoken"));
-exports.SECRET = process.env.SECRET || " "; // This should be in an environment variable in a real application
+exports.SECRET = process.env.SECRET || " ";
 const authenticateJwt = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {
