@@ -6,13 +6,15 @@ const cors=require('cors')
 require('dotenv').config();
 
 const app = express();
-const port = 3001;
+const port = 3000;
 const url = process.env.CLIENT_URL
 
 app.use(cors({
-  origin: url, 
-  credentials: true,
-}))
+  origin: '*', // Be cautious with this in production
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true 
+}));
 
 app.use(express.json());
 

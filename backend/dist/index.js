@@ -22,8 +22,9 @@ const app = (0, express_1.default)();
 const port = 3001;
 const url = process.env.CLIENT_URL;
 app.use(cors({
-    origin: url,
-    credentials: true,
+    origin: '*', // Be cautious with this in production
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express_1.default.json());
 main().catch(err => console.log(err));
