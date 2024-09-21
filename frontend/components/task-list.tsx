@@ -25,11 +25,7 @@ type Data = Task & { _id: string }
 
 export function TaskList() {
   const [list, setList] = useState(true)
-  const [tasks, setTasks] = useState<Task[]>([
-    // { id: "1", title: "Design new landing page", description: "Create a modern and engaging landing page for our product", status: "In Progress", priority: "High", dueDate: new Date(2023, 5, 30) },
-    // { id: "2", title: "Fix login bug", description: "Users are experiencing issues with the login process", status: "To Do", priority: "Medium", dueDate: new Date(2023, 5, 25) },
-    // { id: '3', title: "Update privacy policy", status: "Completed", priority: "Low", dueDate: new Date(2023, 6, 10) },
-  ])
+  const [tasks, setTasks] = useState<Task[]>([])
 
   const [newTask, setNewTask] = useState<Task>({
     id: "",

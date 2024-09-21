@@ -1,4 +1,5 @@
 'use client'
+import { useAuth } from "@/components/AuthProvider"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -9,6 +10,7 @@ export default function AuthPageComponent() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -18,8 +20,10 @@ export default function AuthPageComponent() {
       body: JSON.stringify({ username, password })
     });
     const data = await response.json();
+    console.log(data)
     if (data.token) {
       localStorage.setItem("token", data.token)
+      await login({ username });
       router.push("/");
     } else {
       alert("invalid credentials");
