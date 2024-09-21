@@ -25,7 +25,6 @@ type Data = Task & { _id: string }
 
 export function TaskList() {
   const [list, setList] = useState(true)
-  const [loading, setLoading] = useState(true)
   const [tasks, setTasks] = useState<Task[]>([
     { id: "1", title: "Design new landing page", description: "Create a modern and engaging landing page for our product", status: "In Progress", priority: "High", dueDate: new Date(2023, 5, 30) },
     { id: "2", title: "Fix login bug", description: "Users are experiencing issues with the login process", status: "To Do", priority: "Medium", dueDate: new Date(2023, 5, 25) },
@@ -54,10 +53,8 @@ export function TaskList() {
         const data: Data[] = await response.json();
 
         setTasks(data.map(item => ({ ...item, id: item._id })));
-        setLoading(false)
       } catch (error) {
         console.error(error)
-        setLoading(false)
       }
     };
     getTodos();

@@ -54,7 +54,7 @@ export default function AuthPageComponent() {
               () => router.push("/signup")
             }
           >
-            Don't have an account? Sign Up
+            Don&apos;t have an account? Sign Up
           </button>
         </div>
       </div>

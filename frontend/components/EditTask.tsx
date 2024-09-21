@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { format, set } from "date-fns"
-import { FilePenLine, Plus } from "lucide-react"
-import { Task } from "./task-list"
+import { format } from "date-fns"
+import { FilePenLine } from "lucide-react"
 import { useState } from "react"
+import { Task } from "./task-list"
 
 export default function EditTask({ task, update }: { task: Task, update: (id: string, newData: Task, remove?: boolean) => void }) {
   const [newTask, setNewTask] = useState(task)

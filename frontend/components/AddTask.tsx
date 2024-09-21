@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { format } from "date-fns"
 import { Plus } from "lucide-react"
-import { Task } from "./task-list"
 import { useState } from "react"
+import { Task } from "./task-list"
 
 export default function AddTask({ newTask, setNewTask, setTasks }: { newTask: Task, setNewTask: React.Dispatch<React.SetStateAction<Task>>, setTasks: React.Dispatch<React.SetStateAction<Task[]>> }) {
   const [open, setOpen] = useState(false)

@@ -16,7 +16,7 @@ export default function LoadingOrContent({ children }: { children: React.ReactNo
         router.push('/')
       }
     }
-  }, [user, isLoading, pathname])
+  }, [user, isLoading, pathname, router])
 
   if (isLoading) {
     return <div className="text-center flex h-screen items-center justify-center">
