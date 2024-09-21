@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
-export const SECRET = process.env.SECRET || " ";  // This should be in an environment variable in a real application
+export const SECRET = process.env.SECRET || " ";  
 
 export const authenticateJwt = (req : Request , res : Response, next : NextFunction) => {
   const authHeader = req.headers.authorization;

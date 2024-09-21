@@ -12,10 +12,11 @@ import { useState } from "react"
 
 export default function AddTask({ newTask, setNewTask, setTasks }: { newTask: Task, setNewTask: React.Dispatch<React.SetStateAction<Task>>, setTasks: React.Dispatch<React.SetStateAction<Task[]>> }) {
   const [open, setOpen] = useState(false)
-  const addTask = async () => {
+  const addTask = async (e: React.FormEvent) => {
+    e.preventDefault()
     if (newTask.title) {
 
-      const response = await fetch('http://localhost:3001/task/add', {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task/add', {
         method: 'POST',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(newTask)

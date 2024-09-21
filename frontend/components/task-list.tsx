@@ -48,7 +48,7 @@ export function TaskList() {
   useEffect(() => {
     const getTodos = async () => {
       try {
-        const response = await fetch('http://localhost:3001/task', {
+        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task', {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         });
         const data: Data[] = await response.json();
@@ -65,7 +65,7 @@ export function TaskList() {
 
   async function update(id: string, newData: Task, remove: boolean = false) {
     if (remove) {
-      const response = await fetch('http://localhost:3001/task/' + id, {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task/' + id, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, 'Content-Type': 'application/json' },
       });
@@ -80,7 +80,7 @@ export function TaskList() {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/task/' + id, {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/task/' + id, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(newData)
@@ -114,10 +114,7 @@ export function TaskList() {
     })
     .sort((a, b) => {
       if (sortBy === 'default') {
-        if (a.dueDate && !b.dueDate) return -1;
-        if (!a.dueDate && b.dueDate) return 1;
-        if (!a.dueDate && !b.dueDate) return 0;
-        return new Date(a.dueDate ?? new Date(0)).getTime() - new Date(b.dueDate ?? new Date(0)).getTime();
+        return 0;
       } else {
         const aTime = a.dueDate ? new Date(a.dueDate).getTime() : 0;
         const bTime = b.dueDate ? new Date(b.dueDate).getTime() : 0;

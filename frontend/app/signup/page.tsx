@@ -12,7 +12,7 @@ export default function AuthPageComponent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:3001/auth/signup', {
+    const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL+'/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
