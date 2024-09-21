@@ -58,7 +58,7 @@ export function BoardColumn({ column, tasks, update, isOverlay }: BoardColumnPro
   };
 
   const variants = cva(
-    "h-[500px] max-h-[500px]  w-full md:w-[350px] bg-primary-foreground flex flex-col flex-shrink-0 snap-center",
+    "h-[500px] max-h-[500px] w-[350px] bg-primary-foreground flex flex-col flex-shrink-0 snap-center",
     {
       variants: {
         dragging: {
